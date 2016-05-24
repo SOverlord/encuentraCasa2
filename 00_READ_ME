@@ -1,0 +1,17 @@
+Version 5.0
+
+Se reinició el proyecto debido al approach que se iba a dar.
+En las versiones < 4.9 procedía a una red social donde cada pensión creaba su perfil privado. De igual forma, los usuarios procedían a crear su perfil.
+Ahora, se tendrá una cuenta maestra administrador que registrará las pensiones. Además, todos los usuarios podrán ingresar sin registro.
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+*Probar un proyecto en localhost
+	/<DIRECTORIO>/google_appengine/dev_appserver.py <CARPETA_DEL_PROYECTO>/
+	speedstream@speedstream-Aspire-E1-521:~/Escritorio/google_appengine$ dev_appserver.py ~/Escritorio/encuentraCasa2/
+
+
+*Actualizar un proyecto
+	/<DIRECTORIO>/google_appengine/appcfg.py update <CARPETA_DEL_NUEVO>
