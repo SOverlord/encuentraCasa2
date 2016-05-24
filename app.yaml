@@ -41,6 +41,9 @@ handlers:
 - url: /registrarUsuario
   script: registrarUsuario.application
 
+- url: /registrarNuevaPension
+  script: registrarNuevaPension.application
+
 - url: /adminIndex
   script: adminIndex.application
 

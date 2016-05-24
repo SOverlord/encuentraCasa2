@@ -7,20 +7,16 @@ class Usuario(db.Model):
 
 class Lugar(db.Model):
     str_urlFotoPerfil = db.StringProperty(default = "0")
-    str_nombrePension = db.StringProperty(required=True)
-    str_descripcion = db.StringProperty(required=True)
-    
-    str_nombreArrendador = db.StringProperty(required=True)
-    str_ciudad = db.StringProperty(required=True)
-    str_direccion = db.StringProperty(required=True)
-    int_cp = db.IntegerProperty(required=True)
-
-
-
-    int_telefonoCasa = db.IntegerProperty(required=True)
-    int_telefonoCelular = db.IntegerProperty(required=True)
-    
-    str_urlFotos = db.StringProperty()
+    str_nombrePension = db.StringProperty()
+    str_descripcion = db.StringProperty()
+    str_nombreArrendador = db.StringProperty()
+    str_ciudad = db.StringProperty()
+    str_direccion = db.StringProperty()
+    str_cp = db.StringProperty()
+    str_tipo = db.StringProperty()
+    str_telefonoCasa = db.StringProperty()
+    str_telefonoCelular = db.StringProperty()
+    str_urlFotos = db.StringProperty(default="")
 
 class UserUpload(db.Model):
     blob = blobstore.BlobReferenceProperty()

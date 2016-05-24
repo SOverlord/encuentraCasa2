@@ -63,15 +63,22 @@
                     <div class="signup-form"><!--sign up form-->
                         <h2>Registrar Pensión</h2>
                         <form class="navbar-form navbar-left" id="formRegistro" name="formRegistro" action="/registrarNuevaPension" method="post">
-                            <input type="text" name="str_nombrePension" id="str_nombrePension" placeholder="Nombre de Pensión" required autofocus/>
-                            <input type="text" name="str_nombreArrendador" id="str_nombreArrendador" placeholder="Nombre de Arrendador" required/>
+                            <input type="text" name="nombrePension" id="nombrePension" placeholder="Nombre de Pensión" required autofocus/>
+                            <input type="text" name="nombreArrendador" id="nombreArrendador" placeholder="Nombre de Arrendador" required/>
+                            <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad" required/>
+                            <input type="text" name="direccion" id="direccion" placeholder="Dirección" required/>
+                            <input type="text" name="cp" id="cp" placeholder="Código Postal" required/>
 
-                            <input type="text" name="" id="str_Ciudad" placeholder="Ciudad" required/>
-                            <input type="text" name="" id="str_direccion" placeholder="Dirección" required/>
-                            <input type="number" name="" id="int_cp" placeholder="Código Postal" required/>
-
-                            <input type="text" name="int_telefonoCasa" id="int_telefonoCasa" placeholder="Teléfono de Casa" required>
-                            <input type="text" name="int_telefonoCelular" id="int_telefonoCelular" placeholder="Teléfono Celular" required>
+                            <input type="text" name="telefonoCasa" id="telefonoCasa" placeholder="Teléfono de Casa" required>
+                            <input type="text" name="telefonoCelular" id="telefonoCelular" placeholder="Teléfono Celular" required>
+                            <div>
+                                <input name="tipo" id="tipo" value="mujeres" type="radio" required autofocus> Sólo Mujeres
+                                <input name="tipo" id="tipo" value="hombres" type="radio" required> Sólo Hombres
+                                <input name="tipo" id="tipo" value="mixto" type="radio" required> Mixto
+                            </div>
+                            <div>
+                                <input type="text" name="descripcion" id="descripcion" placeholder="Descripción" required>
+                            </div>
                             <button type="submit" class="btn btn-default">Registrar</button>
                         </form>
                     </div><!--/sign up form-->
