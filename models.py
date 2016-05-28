@@ -6,6 +6,7 @@ class Usuario(db.Model):
     str_password = db.StringProperty()
 
 class Lugar(db.Model):
+    int_idPension = db.IntegerProperty()
     str_urlFotoPerfil = db.StringProperty(default = "0")
     str_nombrePension = db.StringProperty()
     str_descripcion = db.StringProperty()

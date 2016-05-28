@@ -12,8 +12,11 @@ class adminIndex(session_module.BaseSessionHandler):
     def get(self): 
         #si se intenta crear una sesion y ya existe la variable de una sesion solo imprimimos cual es el usuario de la sesion
         if self.session.get('usuario'):
+            query = db.Query(models.Lugar)
             template = template_env.get_template('adminIndex.html')
-            context = {}
+            context = {
+            	'query': query
+            }
             self.response.out.write(template.render(context))
         #si no existia, creamos la sesion
         else:
