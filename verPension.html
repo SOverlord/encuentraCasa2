@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+ <meta name="viewport" content="width=device-width" />
+ <title>  </title>
+
+ <link rel="stylesheet" href="/css/bootstrap.min.css">
+ <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+ <script src="/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+<body>
+<b>
+
+
+<table>
+<tr>
+ <td>
+  <img src="/images/tdd.png" heigth=60 width=60/> 
+  <br>
+  <a href="/setupproject"> setup  </a>
+ </td>
+
+ <td>
+
+ <table>
+  <tr> <td> Project Name: </td> <td></td> </tr>
+
+  <tr> <td> Short Description: </td> <td></td> </tr>
+  <tr> <td> Language: </td> <td></td> </tr>
+  <tr> <td> Architecture: </td> <td></td> </tr>
+ </table>
+ </td>
+</tr>
+
+</table>
+
+
+<hr>
+
+<table>
+<tr> <td> Project Leader </td> </tr>
+
+<tr> <td> Team members : </td> <td></td> </tr>
+
+
+</table>
+
+
+</td>
+<tr>
+</table>
+</b>
+
+<hr>
+
+            <div class="form-group">
+
+              <a href="/newrelease"> New release </a>
+            </div>
+
+Releases :
+<table border=1>
+<h3> {{verPens.key().id()}} </h3>
+<tr>
+<td> {{verPens.str_nombrePension}} </td>
+<td> {{verPens.str_descripcion}} </td>
+<td> {{verPens.str_nombreArrendador}} </td>
+<td> {{verPens.str_ciudad}} </td>
+
+
+</tr>
+</table>
+
+<hr>
+<b> ADESOFT SA de CV</b>
+</body>
+
+
+<!--
+{% if user %}
+ <p>
+    Welcome, {{user.email()}}!
+    you can <a href="{{logout_url}}"> sign out</a> 
+ </p>
+{% else %}
+ <p>
+   Welcome !
+   <a href="{{login_url}}">Sign in or register</a> to customize
+ </p>
+
+{% endif %}
+
+<p> the time is: {{current_time}} </p>
+
+
+{% if user %}
+  <form action="/prefs" method="post">
+    <label for "tz_offset">
+	Timezone offset from UTC (can be negative):
+    </label>
+    <input name="tz_offset" id="tz_offset" type="text" size=4
+	value="{{ userprefs.tz_offset }}" />
+
+   <input type="submit" value="Set" />
+  </form>
+
+{% endif %}
+-->
+</body>
+</html>
