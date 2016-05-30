@@ -6,7 +6,8 @@ class Usuario(db.Model):
     str_password = db.StringProperty()
 
 class Lugar(db.Model):
-    int_idPension = db.IntegerProperty()
+    #int_LugarID = ID autogenerado por GAE
+    int_publicarPension = db.IntegerProperty(default=0)
     str_urlFotoPerfil = db.StringProperty(default = "0")
     str_nombrePension = db.StringProperty()
     str_descripcion = db.StringProperty()
@@ -17,7 +18,7 @@ class Lugar(db.Model):
     str_tipo = db.StringProperty()
     str_telefonoCasa = db.StringProperty()
     str_telefonoCelular = db.StringProperty()
-    str_urlFotos = db.StringProperty(default="")
 
 class UserUpload(db.Model):
+    int_usrKey = db.IntegerProperty(default=0)
     blob = blobstore.BlobReferenceProperty()

@@ -47,6 +47,9 @@ handlers:
 - url: /adminIndex
   script: adminIndex.application
 
+- url: /editarPension
+  script: editarPension.application
+
 #-url: /actualizarPerfil
   #script: actualizarPerfil.application
 
