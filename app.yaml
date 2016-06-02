@@ -50,8 +50,8 @@ handlers:
 - url: /editarPension
   script: editarPension.application
 
-#-url: /actualizarPerfil
-  #script: actualizarPerfil.application
+- url: /actualizarPension
+  script: actualizarPension.application
 
 
 #Carpetas internas.

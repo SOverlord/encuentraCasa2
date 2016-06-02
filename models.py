@@ -4,6 +4,8 @@ from google.appengine.ext import blobstore
 class Usuario(db.Model):
     str_email = db.StringProperty()
     str_password = db.StringProperty()
+#Agregar un usuario predeterminado
+
 
 class Lugar(db.Model):
     #int_LugarID = ID autogenerado por GAE
@@ -20,5 +22,5 @@ class Lugar(db.Model):
     str_telefonoCelular = db.StringProperty()
 
 class UserUpload(db.Model):
-    int_usrKey = db.IntegerProperty(default=0)
+    int_LugarKey = db.IntegerProperty(default=0)
     blob = blobstore.BlobReferenceProperty()
