@@ -27,13 +27,7 @@ class actualizarPension(session_module.BaseSessionHandler, webapp2.RequestHandle
             new_telefonoCasa = self.request.get('telefonoCasa')
             new_telefonoCelular = self.request.get('telefonoCelular')
             new_descripcion = self.request.get('descripcion')
-        
-            #Almacenamos el contenido de las variables locales en la base de datos
-            #usuarioF = usr.get()
-            #usuarioF.str_sexo = sexo
-            #usuarioF.put()
 
-            #actualizacion = pension.get()
             pension.str_nombrePension = new_Pension
             pension.str_descripcion = new_descripcion
             pension.str_nombreArrendador = new_NombreArrendador
@@ -43,7 +37,7 @@ class actualizarPension(session_module.BaseSessionHandler, webapp2.RequestHandle
             pension.str_telefonoCasa = new_telefonoCasa
             pension.put()
 
-            self.redirect("/adminIndex")
+            self.redirect("/editarPension?idPension="+str(idPens))
 	
 #controler, clase, debug
 application = webapp2.WSGIApplication([('/actualizarPension', actualizarPension)],config = session_module.myconfig_dict,debug=True)
