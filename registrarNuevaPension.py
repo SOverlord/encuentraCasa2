@@ -10,6 +10,7 @@ from google.appengine.ext import db
 class registrarNuevaPension(webapp2.RequestHandler):
     def post(self):
         #Recuperamos la informacion del HTML y la almacenamos en variables locales
+
         l_nombrePension = self.request.get('nombrePension')
         l_nombreArrendador = self.request.get('nombreArrendador')
         l_ciudad = self.request.get('ciudad')
@@ -56,6 +57,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
         pension.str_amueblado = l_amueblado
         pension.str_limpieza = l_limpieza
         
+        pension.int_publicarPension = 0 #No esta publicada aun
         pension.str_urlFotoPerfil = "0" #significa que no tiene imagen
         #colocamos esas variables en el objeto pension
         pension.put()

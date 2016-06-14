@@ -30,7 +30,7 @@ class Validar_inicio_sesion(webapp2.RequestHandler):
 		        anoActual = datetime.datetime.now().year
 
 		        #Cargamos la pagina en la que se avisara del error
-		        template = template.get_template('adminLogin.html')
+		        template = template.get_template('admin/adminLogin.html')
 
 		        #Enviamos variables que desplegaran informacion en el html
 		        context = {

@@ -11,7 +11,7 @@ template_env = jinja2.Environment(
 
 class adminLogin(webapp2.RequestHandler):
   def get(self):
-    template = template_env.get_template('adminLogin.html')
+    template = template_env.get_template('admin/adminLogin.html')
     context = {}
     self.response.out.write(template.render(context))
     

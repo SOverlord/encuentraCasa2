@@ -17,9 +17,22 @@ handlers:
 - url: /adminLogin
   script: adminLogin.application
 
+- url: /adminIndex
+  script: adminIndex.application
+
 - url: /publicarNuevo
   script: publicarNuevo.application
 
+- url: /registrarNuevaPension
+  script: registrarNuevaPension.application
+
+- url: /editarPension
+  script: editarPension.application
+
+- url: /actualizarPension
+  script: actualizarPension.application
+
+#Comportamientos admin
 - url: /validar_inicio_sesion
   script: validar_inicio_sesion.application
 
@@ -41,17 +54,6 @@ handlers:
 - url: /registrarUsuario
   script: registrarUsuario.application
 
-- url: /registrarNuevaPension
-  script: registrarNuevaPension.application
-
-- url: /adminIndex
-  script: adminIndex.application
-
-- url: /editarPension
-  script: editarPension.application
-
-- url: /actualizarPension
-  script: actualizarPension.application
 
 
 #Carpetas internas.
@@ -62,13 +64,13 @@ handlers:
   static_dir: img
 
 - url: /css
-  static_dir: css
+  static_dir: admin/css
 
 - url: /fonts
-  static_dir: fonts
+  static_dir: admin/fonts
 
 - url: /js
-  static_dir: js
+  static_dir: admin/js
 
 #index.html && main.py
 - url: .*

@@ -13,7 +13,7 @@ class adminIndex(session_module.BaseSessionHandler):
         #si se intenta crear una sesion y ya existe la variable de una sesion solo imprimimos cual es el usuario de la sesion
         if self.session.get('usuario'):
             query = db.Query(models.Lugar)
-            template = template_env.get_template('adminIndex.html')
+            template = template_env.get_template('admin/adminIndex.html')
             context = {
             	'query': query
             }

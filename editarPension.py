@@ -14,7 +14,7 @@ class editarPension(webapp2.RequestHandler):
 		#Recuperamos el ID de URL
 		idP = int(self.request.get('idPension'))	#Obtenemos ID de URL
 	  	editarPens = models.Lugar.get_by_id(idP)		#Buscamos la ID en la BD
-	  	template = template_env.get_template('editarPension.html')
+	  	template = template_env.get_template('admin/editarPension.html')
 	  	context = {
 	   		'editarPens': editarPens 		#Mandamos los datos al HTML
 	  	}
