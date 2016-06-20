@@ -40,80 +40,59 @@
 			<div class="container">
 			  <div class="row">
 				<div class = "col-md-6">
-
-				  <label>DATOS GENERALES</label>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="nombrePension" id="nombrePension" placeholder="Nombre de Pensión" required autofocus/>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="nombreArrendador" id="nombreArrendador" placeholder="Nombre de Arrendador" required/>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" required/>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección" required/>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="cp" id="cp" placeholder="Código Postal" required/>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="email" id="email" placeholder="Correo Electrónico" required>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="telefonoCasa" id="telefonoCasa" placeholder="Teléfono de Casa" required>
-				  </div>
-				  <div class="form-group">
-					<input type="text" class="form-control" name="telefonoCelular" id="telefonoCelular" placeholder="Teléfono Celular" required>
-				  </div>
-
+					<label>DATOS GENERALES</label>
+				  	<div class="form-group"><input type="text" class="form-control" name="nombrePension" id="nombrePension" placeholder="Nombre de Pensión" required autofocus/></div>
+				  	<div class="form-group"><input type="text" class="form-control" name="nombreArrendador" id="nombreArrendador" placeholder="Nombre de Arrendador" required/></div>
+					<div class="form-group"><input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" required/></div>
+					<div class="form-group"><input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección" required/></div>
+					<div class="form-group"><input type="text" class="form-control" name="cp" id="cp" placeholder="Código Postal" required/></div>
+					<div class="form-group"><input type="text" class="form-control" name="email" id="email" placeholder="Correo Electrónico" required></div>
+					<div class="form-group"><input type="text" class="form-control" name="telefonoCasa" id="telefonoCasa" placeholder="Teléfono de Casa" required></div>
+					<div class="form-group"><input type="text" class="form-control" name="telefonoCelular" id="telefonoCelular" placeholder="Teléfono Celular" required></div>
+					<div class="form-group"><input type="number" class="form-control" name="costoRenta" id="costoRenta" placeholder="Renta Mensual" min="0" required></div>
 				</div>
 				<div class = "col-md-6">
-				  
-				  <div class="container">
-					<div class="row">
-					  <div class="col-xs-6" align="left">
-						<label>TIPO DE LUGAR</label>
-						<br>
-						<input type="radio" name="tipoLugar" id="tipoLugar" value="casa" required> Casa<br>
-						<input type="radio" name="tipoLugar" id="tipoLugar" value="departamento" required> Departamento<br>
-						<input type="radio" name="tipoLugar" id="tipoLugar" value="habitacion" required> Cuarto/Habitación
-					  </div>
-					  <div class="col-xs-6" align="left">
-						<label>RECEPCIÓN</label>
-						<br>
-						<input type="radio" name="tipo" id="tipo" value="mujeres" required autofocus> Sólo Mujeres<br>
-						<input type="radio" name="tipo" id="tipo" value="hombres" required> Sólo Hombres<br>
-						<input type="radio" name="tipo" id="tipo" value="mixto" required> Mixto
-					  </div>
-					</div>
-				  </div><br>
-				  <div class="form-group">
-					<label>DESCRIPCIÓN</label>
-					<textarea name="descripcion" class="form-control" placeholder="Descripción" maxlength="200" rows="5">
-					</textarea>
-				  </div>
-				  <div class="containter">
-					<div class="row">
-					  <center><label>SERVICIOS</label></center>
-					  <div class="col-xs-4" align="left">
-						<input type="checkbox" name="servicio1" id="servicio1" value="True">  <label class="light">Luz</label><br>
-						<input type="checkbox" name="servicio2" id="servicio2" value="True">  <label class="light">Internet</label><br>
-						<input type="checkbox" name="servicio3" id="servicio3" value="True">  <label class="light">Cable</label><br>
-					  </div>
-					  <div class="col-xs-4" align="left">
-						<input type="checkbox" name="servicio4" id="servicio4" value="True">  <label class="light">Teléfono</label><br>
-						<input type="checkbox" name="servicio5" id="servicio5" value="True">  <label class="light">Lavandería</label><br>
-						<input type="checkbox" name="servicio6" id="servicio6" value="True">  <label class="light">Comida</label><br>
-					  </div>
-					  <div class="col-xs-4" align="left">
-						<input type="checkbox" name="servicio7" id="servicio7" value="True">  <label class="light">Agua Caliente</label><br>
-						<input type="checkbox" name="servicio8" id="servicio8" value="True">  <label class="light">Amueblado</label><br>
-						<input type="checkbox" name="servicio9" id="servicio9" value="True">  <label class="light">Limpieza</label><br>
-					  </div>
-					</div>
-				  </div>
-
+				  	<div class="container">
+						<div class="row">
+					  		<div class="col-xs-6" align="left">
+								<label>TIPO DE LUGAR</label><br>
+								<input type="radio" name="tipoLugar" id="tipoLugar" value="casa" required> Casa<br>
+								<input type="radio" name="tipoLugar" id="tipoLugar" value="departamento" required> Departamento<br>
+								<input type="radio" name="tipoLugar" id="tipoLugar" value="habitacion" required> Cuarto/Habitación
+					  		</div>
+					  		<div class="col-xs-6" align="left">
+								<label>RECEPCIÓN</label><br>
+								<input type="radio" name="tipo" id="tipo" value="mujeres" required autofocus> Sólo Mujeres<br>
+								<input type="radio" name="tipo" id="tipo" value="hombres" required> Sólo Hombres<br>
+								<input type="radio" name="tipo" id="tipo" value="mixto" required> Mixto
+					  		</div>
+						</div>
+				 	</div><br>
+				  	<div class="form-group">
+						<label>DESCRIPCIÓN</label>
+						<textarea name="descripcion" class="form-control" placeholder="Descripción" maxlength="200" rows="5">
+						</textarea>
+				  	</div>
+				  	<div class="containter">
+						<div class="row">
+					  	<center><label>SERVICIOS</label></center>
+						  	<div class="col-xs-4" align="left">
+								<input type="checkbox" name="servicio1" id="servicio1" value="True">  <label class="light">Luz</label><br>
+								<input type="checkbox" name="servicio2" id="servicio2" value="True">  <label class="light">Internet</label><br>
+								<input type="checkbox" name="servicio3" id="servicio3" value="True">  <label class="light">Cable</label><br>
+						  	</div>
+						  	<div class="col-xs-4" align="left">
+								<input type="checkbox" name="servicio4" id="servicio4" value="True">  <label class="light">Teléfono</label><br>
+								<input type="checkbox" name="servicio5" id="servicio5" value="True">  <label class="light">Lavandería</label><br>
+								<input type="checkbox" name="servicio6" id="servicio6" value="True">  <label class="light">Comida</label><br>
+						  	</div>
+						  	<div class="col-xs-4" align="left">
+								<input type="checkbox" name="servicio7" id="servicio7" value="True">  <label class="light">Agua Caliente</label><br>
+								<input type="checkbox" name="servicio8" id="servicio8" value="True">  <label class="light">Amueblado</label><br>
+								<input type="checkbox" name="servicio9" id="servicio9" value="True">  <label class="light">Limpieza</label><br>
+						  	</div>
+						</div>
+				  	</div>
 				</div>
 			  </div>
 			</div>
@@ -342,9 +321,9 @@
 					  <div class="well profile_view">
 						<div class="col-sm-12">
 							{% if result.int_publicarPension == 0 %}
-								<h4 class="brief"><i><span class="label label-default">No activa</span></i></h4>
+								<h4 class="brief"><i><span class="label label-default label-danger">No activa</span></i></h4>
 							{% else %}
-								<h4 class="brief"><i><span class="label label-default">Activa</span></i></h4>
+								<h4 class="brief"><i><span class="label label-default label-success">Activa</span></i></h4>
 							{% endif %}
 						  	<div class="left col-xs-7">
 								<h2>{{result.str_nombrePension}}</h2>
@@ -362,18 +341,20 @@
 						  	<div class="col-xs-12 col-sm-6 emphasis">
 								<a href="/editarPension?idPension={{result.key().id()}}" class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i> Editar</a>
 								{% if result.int_publicarPension == 0 %}
-									<a href="#" class="btn btn-success btn-xs"> <i class="fa fa-check"></i> Activar</a>
+									<form action="/actualizarPension?status=1&idP={{result.key().id()}}" method="post">
+										<button type="submit" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Activar</a></button>
+									</form>
 								{% else %}
-									<a href="#" class="btn btn-danger btn-xs"> <i class="fa fa-close"></i> Desactivar</a>
+									<form action="/actualizarPension?status=0&idP={{result.key().id()}}" method="post">
+										<button type="submit" class="btn btn-danger btn-xs"> <i class="fa fa-close"></i> Desactivar</a></button>
+									</form>
 								{% endif %}
 						  </div>
 						</div>
 					  </div>
 					</div>
 					{% endfor %}
-
 				  </div>
-
 				</div>
 			  </div>
 			</div>

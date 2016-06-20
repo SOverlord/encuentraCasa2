@@ -5,14 +5,15 @@ class Usuario(db.Model):
     str_email = db.StringProperty()
     str_password = db.StringProperty()
 
-i = 0
-if i == 0:
+query = db.Query(Usuario)
+if query.count() == 0:
     newUsr = Usuario(str_email="def@def.com", str_password="1")
+    print("Nuevo usuario agregado")
     newUsr.put()
-    i=i+1
 
 class Lugar(db.Model):
     #int_LugarID = ID autogenerado por GAE
+    int_rentaMensual = db.IntegerProperty()
     int_publicarPension = db.IntegerProperty(default=0)
     str_urlFotoPerfil = db.StringProperty(default = "0")
     str_nombrePension = db.StringProperty()
@@ -38,5 +39,8 @@ class Lugar(db.Model):
     str_limpieza = db.StringProperty(default="False")
 
 class UserUpload(db.Model):
-    int_LugarKey = db.IntegerProperty(default=0)
     blob = blobstore.BlobReferenceProperty()
+
+class CarreteFotos(db.Model):
+    str_LugarID = db.StringProperty()
+    str_urlFoto = db.StringProperty()

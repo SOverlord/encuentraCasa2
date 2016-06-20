@@ -11,6 +11,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
     def post(self):
         #Recuperamos la informacion del HTML y la almacenamos en variables locales
 
+        l_renta = int(self.request.get('costoRenta'))
         l_nombrePension = self.request.get('nombrePension')
         l_nombreArrendador = self.request.get('nombreArrendador')
         l_ciudad = self.request.get('ciudad')
@@ -35,6 +36,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
 
         #Almacenamos el contenido de las variables locales en la base de datos
         pension = models.Lugar()
+        pension.int_rentaMensual = l_renta
         pension.str_nombrePension = l_nombrePension
         pension.str_nombreArrendador = l_nombreArrendador
         pension.str_ciudad = l_ciudad
@@ -62,8 +64,13 @@ class registrarNuevaPension(webapp2.RequestHandler):
         #colocamos esas variables en el objeto pension
         pension.put()
 
-        #si no metio un correo valido muestra un mensaje un mensaje
-        self.redirect("/adminIndex")
+        #keyPension = str(pension.key())
+        #print "Nueva pension. KEY-> "+keyPension
+        #self.redirect("/adminIndex")
+
+        idPension = str(pension.key().id_or_name())
+        print "Nueva pension. ID -> "+idPension #4748790720364544
+        self.redirect("/editarPension?idPension="+idPension)
 	
 	
 #controler, clase, debug
