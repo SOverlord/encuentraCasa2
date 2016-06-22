@@ -314,8 +314,6 @@
 					  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalRegistrar"><i class="fa fa-home"></i> Publicar anuncio </button>
 					</div>
 					<div class="clearfix"></div>
-
-
 					{% for result in query %}
 					<div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
 					  <div class="well profile_view">
@@ -334,11 +332,15 @@
 								<br>
 						  	</div>
 						  	<div class="right col-xs-5 text-center">
-								<img src="https://upload.wikimedia.org/wikipedia/en/c/ca/742_Evergreen_Terrace.png" width="100%" height="100%" class="img-thumbnail img-responsive">
+						  		{% if result.str_urlFotoPerfil == "0" %}
+						  			<img src="/images/first.png" class="img-thumbnail img-responsive">
+						  		{% else %}
+									<img src="/mostrar?key={{result.str_urlFotoPerfil}}" class="img-thumbnail img-responsive">
+						  		{% endif %}
 							</div>
 						</div>
 						<div class="col-xs-12 bottom text-center">
-						  	<div class="col-xs-12 col-sm-6 emphasis">
+							<div class="col-xs-12 col-sm-6 emphasis">
 								<a href="/editarPension?idPension={{result.key().id()}}" class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i> Editar</a>
 								{% if result.int_publicarPension == 0 %}
 									<form action="/actualizarPension?status=1&idP={{result.key().id()}}" method="post">
@@ -349,17 +351,17 @@
 										<button type="submit" class="btn btn-danger btn-xs"> <i class="fa fa-close"></i> Desactivar</a></button>
 									</form>
 								{% endif %}
-						  </div>
+							</div>
 						</div>
-					  </div>
 					</div>
-					{% endfor %}
-				  </div>
 				</div>
-			  </div>
+				{% endfor %}
 			</div>
-		  </div>
 		</div>
+	</div>
+</div>
+</div>
+</div>
 
 		<!-- footer content -->
 		<footer>

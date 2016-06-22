@@ -23,21 +23,42 @@ class CargarArchivo(session_module.BaseSessionHandler, blobstore_handlers.Blobst
         #iniciamos esta variable que almacenara el key del objeto blob
         blob_key = ''
         #'upload' es el nombre de la variable html que recibe el archivo
+        archivo = self.request.get('file')
+        print "Agregando foto"
         for blob_info in self.get_uploads('upload'):
-            #almacenamos la key obtenida
-            blob_key = blob_info.key()
-            #guardamos el archivo en un objeto userupload
-            upload = models.UserUpload(blob = blob_key)
-            upload.put()
-            #buscamos el archivo en la base de datos, objeto userupload
-            key_blob = 'x'
-            myblob = db.Query(models.UserUpload).filter("blob", key_blob)
-            myb = myblob.get()
-            key_blob = upload.key()
-            archivo = self.request.get('file')
+            print archivo
             if archivo == "fotoperfil":
+                #almacenamos la key obtenida
+                blob_key = blob_info.key()
+                #guardamos el archivo en un objeto userupload
+                upload = models.UserUpload(blob = blob_key)
+                upload.put()
+                #buscamos el archivo en la base de datos, objeto userupload
+                key_blob = 'x'
+                myblob = db.Query(models.UserUpload).filter("blob", key_blob)
+                myb = myblob.get()
+                key_blob = upload.key()
+                print "Es foto de perfil"
                 pension.str_urlFotoPerfil = str(key_blob)
                 pension.put()
-                self.redirect("/editarPension?idPension="+str(idP))
+        for blob_info in self.get_uploads('upload2'):
+            if archivo == "fotoCarrete":
+                #almacenamos la key obtenida
+                blob_key = blob_info.key()
+                #guardamos el archivo en un objeto userupload
+                upload = models.UserUpload(blob = blob_key)
+                upload.put()
+                #buscamos el archivo en la base de datos, objeto userupload
+                key_blob = 'x'
+                myblob = db.Query(models.UserUpload).filter("blob", key_blob)
+                myb = myblob.get()
+                key_blob = upload.key()
+                print "Es foto de carrete"
+                crt = models.CarreteFotos()
+                crt.str_LugarID = str(idP)
+                crt.str_urlFoto = str(key_blob)
+                crt.put()
+        
+        self.redirect("/editarPension?idPension="+str(idP))
         
 application = webapp2.WSGIApplication([('/cargarArchivo', CargarArchivo)], config = session_module.myconfig_dict, debug=True)

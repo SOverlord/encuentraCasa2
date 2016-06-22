@@ -17,9 +17,11 @@ class mostrar(blobstore_handlers.BlobstoreDownloadHandler):
         upload_key_str = self.request.params.get('key')
         upload = None
         if upload_key_str:
-            upload = db.get(upload_key_str)  
+            upload = db.get(upload_key_str)
+        if (not upload_key_str):
+            print "Error upload_key_str"
         if (not upload): 
-            print "Opps"
+            print "Error upload"
             self.error(404)
             return 
 

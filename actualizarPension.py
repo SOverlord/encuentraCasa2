@@ -15,13 +15,13 @@ class actualizarPension(session_module.BaseSessionHandler, webapp2.RequestHandle
 	def post(self):
 		#Recuperamos el ID de la pension
 		idPens = int(self.request.get('idP'))	#Obtenemos ID de URL
-		stat = int(self.request.get('status'))
 		print idPens
 		pension = models.Lugar.get_by_id(idPens)		#Buscamos la ID en la BD
 		try:
+			stat = int(self.request.get('status'))
 			stat = self.request.get('status')
 			print stat
-		except NoStatus:
+		except:
 			print "No tenemos status. Estamos registrando uno nuevo"
 			if pension:
 			#Recuperamos la informacion del HTML y la almacenamos en variables locales
