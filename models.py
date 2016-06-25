@@ -14,6 +14,8 @@ if query.count() == 0:
 class Lugar(db.Model):
     #int_LugarID = ID autogenerado por GAE
     int_rentaMensual = db.IntegerProperty()
+    str_fechaRegistro = db.StringProperty()
+    int_fechaRegistro = db.IntegerProperty()
     int_publicarPension = db.IntegerProperty(default=0)
     str_urlFotoPerfil = db.StringProperty(default = "0")
     str_nombrePension = db.StringProperty()

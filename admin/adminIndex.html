@@ -49,7 +49,8 @@
 					<div class="form-group"><input type="text" class="form-control" name="email" id="email" placeholder="Correo Electrónico" required></div>
 					<div class="form-group"><input type="text" class="form-control" name="telefonoCasa" id="telefonoCasa" placeholder="Teléfono de Casa" required></div>
 					<div class="form-group"><input type="text" class="form-control" name="telefonoCelular" id="telefonoCelular" placeholder="Teléfono Celular" required></div>
-					<div class="form-group"><input type="number" class="form-control" name="costoRenta" id="costoRenta" placeholder="Renta Mensual" min="0" required></div>
+					<div class="form-group"><div class="input-group"><div class="input-group-addon">$</div><input type="number" class="form-control" name="costoRenta" id="costoRenta" placeholder="Renta Mensual" min="0" required></div></div>
+					
 				</div>
 				<div class = "col-md-6">
 				  	<div class="container">
@@ -70,8 +71,7 @@
 				 	</div><br>
 				  	<div class="form-group">
 						<label>DESCRIPCIÓN</label>
-						<textarea name="descripcion" class="form-control" placeholder="Descripción" maxlength="200" rows="5">
-						</textarea>
+						<textarea name="descripcion" class="form-control" placeholder="Descripción" maxlength="250" rows="5"></textarea>
 				  	</div>
 				  	<div class="containter">
 						<div class="row">
@@ -130,7 +130,7 @@
 			</div>
 			<div class="profile_info">
 			  <span>Bienvenido,</span>
-			  <h2>Bacano Santos</h2>
+			  <h2>{{usr}}</h2>
 			</div>
 		  </div>
 		  <!-- /menu prile quick info -->
@@ -308,30 +308,28 @@
 			  <div class="x_panel">
 				<div class="x_content">
 
-				  <div class="row">
-
+				  <div class="row" style="display:flex; flex-wrap:wrap;">
 					<div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
-					  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalRegistrar"><i class="fa fa-home"></i> Publicar anuncio </button>
+					  <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalRegistrar"><i class="fa fa-home"></i> Publicar anuncio </button><br><br>
 					</div>
-					<div class="clearfix"></div>
 					{% for result in query %}
-					<div class="col-md-4 col-sm-4 col-xs-12 animated fadeInDown">
-					  <div class="well profile_view">
-						<div class="col-sm-12">
+					<div class="col-md-4 col-sm-3 col-xs-12 animated fadeInDown">
+					  <div class="well profile_view" style="">
+						<div class="col-sm-11">
 							{% if result.int_publicarPension == 0 %}
 								<h4 class="brief"><i><span class="label label-default label-danger">No activa</span></i></h4>
 							{% else %}
 								<h4 class="brief"><i><span class="label label-default label-success">Activa</span></i></h4>
 							{% endif %}
-						  	<div class="left col-xs-7">
-								<h2>{{result.str_nombrePension}}</h2>
+						  	<div class="left col-xs-5">
+								<h2><b>{{result.str_nombrePension}}</b></h2>
 								<ul class="list-unstyled">
-							  		<li><i class="fa fa-phone"></i> 272727272</li>
-							  		<li><i class="fa fa-location-arrow"></i> Oriente 12 #34</li>
+							  		<li><i class="fa fa-user"></i> {{result.str_nombreArrendador}}</li>
+							  		<li><i class="fa fa-location-arrow"></i> {{result.str_direccion}}</li>
 								</ul>
 								<br>
 						  	</div>
-						  	<div class="right col-xs-5 text-center">
+						  	<div class="right col-xs-6 text-center">
 						  		{% if result.str_urlFotoPerfil == "0" %}
 						  			<img src="/images/first.png" class="img-thumbnail img-responsive">
 						  		{% else %}
@@ -339,19 +337,13 @@
 						  		{% endif %}
 							</div>
 						</div>
-						<div class="col-xs-12 bottom text-center">
-							<div class="col-xs-12 col-sm-6 emphasis">
+						<div class="col-xs-12 bottom" style="text-align:center;">
 								<a href="/editarPension?idPension={{result.key().id()}}" class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i> Editar</a>
 								{% if result.int_publicarPension == 0 %}
-									<form action="/actualizarPension?status=1&idP={{result.key().id()}}" method="post">
-										<button type="submit" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Activar</a></button>
-									</form>
+									<a href="/adminIndex?idP={{result.key().id()}}&status=1" class="btn btn-success btn-xs"><i class="fa fa-check"></i> Activar</a>
 								{% else %}
-									<form action="/actualizarPension?status=0&idP={{result.key().id()}}" method="post">
-										<button type="submit" class="btn btn-danger btn-xs"> <i class="fa fa-close"></i> Desactivar</a></button>
-									</form>
+									<a href="/adminIndex?idP={{result.key().id()}}&status=0" class="btn btn-danger btn-xs"><i class="fa fa-close"></i> Desactivar</a>
 								{% endif %}
-							</div>
 						</div>
 					</div>
 				</div>

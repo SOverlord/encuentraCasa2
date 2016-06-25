@@ -99,18 +99,18 @@
 						<div class="col-md-8 col-sm-12 col-xs-12 animated fadeInDown">
 							<div class = "row"><!--datosGenerales-->
 								<div  class  = "col-xs-6">
-									<div class="form-group"><label>Nombre de la pensión</label><input type="text" class="form-control" name="nombrePension" value="{{editarPens.str_nombrePension}}"></div>
-									<div class="form-group"><label>Nombre arrendador</label><input type="text" class="form-control" name="nombreArrendador" value="{{editarPens.str_nombreArrendador}}"></div>
-									<div class="form-group"><label>Ciudad</label><input type="text" class="form-control" name="nombreCiudad" value="{{editarPens.str_ciudad}}"></div>
-									<div class="form-group"><label>Dirección</label><input type="text" class="form-control" name="direccion" value="{{editarPens.str_direccion}}"></div>
-									<div class="form-group"><label>Código postal</label><input type="text" class="form-control" name="cp" value="{{editarPens.str_cp}}"></div>
+									<div class="form-group"><label>Nombre de la pensión</label><input type="text" class="form-control" name="nombrePension" value="{{editarPens.str_nombrePension}}" required></div>
+									<div class="form-group"><label>Nombre arrendador</label><input type="text" class="form-control" name="nombreArrendador" value="{{editarPens.str_nombreArrendador}}" required></div>
+									<div class="form-group"><label>Ciudad</label><input type="text" class="form-control" name="nombreCiudad" value="{{editarPens.str_ciudad}}" required></div>
+									<div class="form-group"><label>Dirección</label><input type="text" class="form-control" name="direccion" value="{{editarPens.str_direccion}}" required></div>
+									<div class="form-group"><label>Código postal</label><input type="text" class="form-control" name="cp" value="{{editarPens.str_cp}}" required></div>
 			  					</div>
 			  					<div class  = "col-xs-6">
-			  						<div class="form-group"><label>Renta Mensual </label><input type="number" class="form-control" name="rentaMensual" value="{{editarPens.int_rentaMensual}}"></div>
-									<div class="form-group"><label>Correo electrónico </label><input type="email" class="form-control" name="email" value="{{editarPens.str_email}}"></div>
-									<div class="form-group"><label>Teléfono de casa</label><input type="text" class="form-control" name="telefonoCasa" value="{{editarPens.str_telefonoCasa}}"></div>
-									<div class="form-group"><label>Teléfono celular</label><input type="text" class="form-control" name="telefonoCelular" value="{{editarPens.str_telefonoCelular}}"></div>
-									<div class="form-group"><label>Descripción</label><textarea class="form-control" name="descripcion" rows="3" > {{editarPens.txt_descripcion}} </textarea></div>
+			  						<div class="form-group"><label>Renta Mensual</label><div class="input-group"><div class="input-group-addon">$</div><input type="number" class="form-control" name="rentaMensual" value="{{editarPens.int_rentaMensual}}" required></div></div>
+									<div class="form-group"><label>Correo electrónico </label><input type="email" class="form-control" name="email" value="{{editarPens.str_email}}" required></div>
+									<div class="form-group"><label>Teléfono de casa</label><input type="text" class="form-control" name="telefonoCasa" value="{{editarPens.str_telefonoCasa}}" required></div>
+									<div class="form-group"><label>Teléfono celular</label><input type="text" class="form-control" name="telefonoCelular" value="{{editarPens.str_telefonoCelular}}" required></div>
+									<div class="form-group"><label>Descripción</label><textarea class="form-control" name="descripcion" placeholder="Descripción" maxlength="250" rows="4" required>{{editarPens.txt_descripcion}}</textarea></div>
 								</div>
 							</div><!--/datosGenerales-->
 							<div class="row"><!--servicios-->
@@ -135,7 +135,7 @@
 					</div>
 					<div class="col-md-12 animated fadeInDown">
 						<div class="row" align="center"><br><br>
-							<center><button type="submit" class="btn btn-success" data-loading-text="Cargando..." autocomplete="off">Actualizar Información</button></center>
+							<center><button type="submit" class="btn btn-success" data-loading-text="Cargando..." autocomplete="off">ACTUALIZAR INFORMACIÓN</button></center>
 						</div>
 					</div>
 							</form>
@@ -143,21 +143,28 @@
 						<!--fotos de carrete-->
 						<div class="row">
 							<div class="page-header"></div>
-							<center><label>GALERÍA</label></center><br>
-							{% for fotos in carrete %}
-								<div class="col-xs-1 col-md-2 col-lg-2 text-center"><img class="img-thumbnail img-responsive" src="/mostrar?key={{fotos.str_urlFoto}}"></div>
-							{% endfor %}
-							{% for fr in range(0,resFotos) %}
-								<div class="col-xs-1 col-md-2 col-lg-2 text-center"><img src="/images/nopic.png" class="img-thumbnail img-responsive">
-								<form action="{{ uploadCarrete }}" method="post" enctype="multipart/form-data">
-								<left><label for="urlFile">Agrega una foto</label><br></left>
-								<left>
-									<input type="file" id="upload2" name="upload2" required><br>
-									<input type="submit" class="btn btn-info" value="Agregar Foto"><br>
-								</left>
-								</form>
+							<center><h3>GALERÍA</h3>{%if resFotos != 0%} <p class="bg-primary" style="width:40%">Tienes {{resFotos}} foto(s) restantes de 5 máximas.</p>{% else %} <p class="bg-danger text-danger" style="width:40%">Haz alcanzado el límite máximo de fotos. Elimina alguna foto para cambiarla. </p>{% endif %}</center><br>
+							<div class="row" style="display:flex; flex-wrap: wrap;" align="center">
+								{% for fotos in carrete %}
+								<div class="col-xs-5 col-md-3 col-lg-2 text-center">
+									<img class="img-thumbnail img-responsive" src="/mostrar?key={{fotos.str_urlFoto}}"><br/>
+									<div><br>
+										<a href="/editarPension?deletePhoto={{fotos.str_urlFoto}}&idPension={{editarPens.key().id()}}" class="btn btn-danger btn-xs"> <i class="glyphicon glyphicon-remove"></i> Eliminar</a>
+									</div>
 								</div>
-							{% endfor %}
+								{% endfor %}
+								{% if resFotos != 0 %}
+								<div class="col-xs-3 col-md-2 col-lg-2 text-center"><img src="/images/nopic.png" class="img-thumbnail img-responsive">
+									<form action="{{ uploadCarrete }}" method="post" enctype="multipart/form-data">
+										<left><label for="urlFile">Agrega una foto</label><br></left>
+										<left>
+											<input type="file" id="upload2" name="upload2" required><br>
+											<input type="submit" class="btn btn-info" value="Agregar Foto"><br>
+										</left>
+									</form>
+								</div>
+								{% endif %}
+							</div>
 				  		</div>
 				  		<!--/fotos de carrete-->
 					</div>

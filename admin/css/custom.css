@@ -2694,6 +2694,7 @@ textarea {
   padding: 10px;
   vertical-align: top;
   width: 200px;
+  resize: none;
 }
 textarea:focus {
   outline-style: solid;

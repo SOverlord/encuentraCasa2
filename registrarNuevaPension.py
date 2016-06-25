@@ -3,13 +3,25 @@ from google.appengine.api import mail
 import models
 import jinja2
 import os
-import datetime
+from datetime import datetime
+import time
+import horaMx
 
 from google.appengine.ext import db
 
 class registrarNuevaPension(webapp2.RequestHandler):
     def post(self):
         #Recuperamos la informacion del HTML y la almacenamos en variables locales
+        YY = str(horaMx.mexTime().getAno())
+        MM = str(horaMx.mexTime().getMes())
+        DD = str(horaMx.mexTime().getDia())
+        hh = str(horaMx.mexTime().getHora())
+        mm = str(horaMx.mexTime().getMinuto())
+
+        int_registerDate = int(YY+MM+DD+hh+mm)
+        str_registerDate = str(YY+"-"+DD+"-"+MM+" "+hh+":"+mm)
+        print int_registerDate
+        print str_registerDate
 
         l_renta = int(self.request.get('costoRenta'))
         l_nombrePension = self.request.get('nombrePension')
@@ -36,6 +48,8 @@ class registrarNuevaPension(webapp2.RequestHandler):
 
         #Almacenamos el contenido de las variables locales en la base de datos
         pension = models.Lugar()
+        pension.str_fechaRegistro = str_registerDate
+        pension.int_fechaRegistro = int_registerDate
         pension.int_rentaMensual = l_renta
         pension.str_nombrePension = l_nombrePension
         pension.str_nombreArrendador = l_nombreArrendador
@@ -59,7 +73,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
         pension.str_amueblado = l_amueblado
         pension.str_limpieza = l_limpieza
         
-        pension.int_publicarPension = 0 #No esta publicada aun
+        pension.int_publicarPension = 1 #No esta publicada aun
         pension.str_urlFotoPerfil = "0" #significa que no tiene imagen
         #colocamos esas variables en el objeto pension
         pension.put()
