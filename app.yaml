@@ -54,6 +54,9 @@ handlers:
 - url: /registrarUsuario
   script: registrarUsuario.application
 
+#API REST
+- url: /getLugaresREST
+  script: getLugaresREST.application
 
 
 #Carpetas internas.

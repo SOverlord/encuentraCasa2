@@ -5,12 +5,6 @@ class Usuario(db.Model):
     str_email = db.StringProperty()
     str_password = db.StringProperty()
 
-query = db.Query(Usuario)
-if query.count() == 0:
-    newUsr = Usuario(str_email="def@def.com", str_password="1")
-    print("Nuevo usuario agregado")
-    newUsr.put()
-
 class Lugar(db.Model):
     #int_LugarID = ID autogenerado por GAE
     int_rentaMensual = db.IntegerProperty()
@@ -46,3 +40,10 @@ class UserUpload(db.Model):
 class CarreteFotos(db.Model):
     str_LugarID = db.StringProperty()
     str_urlFoto = db.StringProperty()
+
+
+query = db.Query(Usuario)
+if query.count() == 0:
+    newUsr = Usuario(str_email="def@def.com", str_password="1")
+    print("Nuevo usuario agregado")
+    newUsr.put()
