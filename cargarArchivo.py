@@ -11,6 +11,7 @@ from google.appengine.ext import blobstore
 from google.appengine.api import users
 from google.appengine.ext.webapp import blobstore_handlers
 from google.appengine.ext import db
+from google.appengine.api import images
 
 template_env = jinja2.Environment(
   loader = jinja2.FileSystemLoader(os.getcwd()))
@@ -41,6 +42,7 @@ class CargarArchivo(session_module.BaseSessionHandler, blobstore_handlers.Blobst
                 print "Es foto de perfil"
                 pension.str_urlFotoPerfil = str(key_blob)
                 pension.put()
+
         for blob_info in self.get_uploads('upload2'):
             if archivo == "fotoCarrete":
                 #almacenamos la key obtenida

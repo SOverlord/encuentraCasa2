@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Encuentra Casa</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="indexCSS/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="indexCSS/styles.css" rel="stylesheet">
+		<link href="indexCSS/bootstrap.techie.css" rel="stylesheet">
+		<link href="indexCSS/angular.rangeSlider.css" rel="stylesheet">
+
+	</head>
+	<body ng-app="myApp" ng-controller="encuentraCtrl">
+		<nav class="navbar navbar-inverse navbar-fixed-top sombraNav" role="banner">
+		  <div class="container">
+		    
+		  	<div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <!-- <a class="navbar-brand" href="#"><b>Encuentra Casa</b></a> -->
+		      	<a class="navbar-brand" href="/">
+        			<img alt="Brand" src="indexImages/logonav2.png" style="max-width:140px; margin-top: -20px;">
+      			</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+			    <form class="navbar-form navbar-right" role="search" ng-submit="buscar()">
+			    	<div class="input-group">
+				      <input type="text" class="form-control" placeholder="Buscar..." ng-model="inputBuscar">
+				      <span class="input-group-btn">
+				        <button class="btn btn-default" type="button" ng-click="buscar()"><i class="fa fa-search"></i></button>
+				      </span>
+				    </div>
+			    </form>
+
+		      <ul class="nav navbar-nav navbar-right">
+		      	<li><a href="#contenido"><strong>Encuentra</strong></a></li>
+		        <li><a href="/#contacto"><strong>Contacto</strong></a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+
+		  </div>
+		</nav>
+
+		<!--main-->
+		<section id="contenido" style="padding-top: 30px">
+			<div class="container">
+				<div class="row">
+
+					<!--left-->
+				      <div class="col-md-3" id="leftCol">
+				      	<div id="sidebar">
+				      		<center>
+
+							      		<div class="panel panel-default">
+					  						<div class="panel-body">
+					  							<h3><strong><small>Agiliza tu búsqueda con nuestros</small> Filtros <i class="fa fa-filter" aria-hidden="true"></i></strong></h3>
+					  						</div>
+					  					</div>
+
+							      		<div class="input-group">
+							      			<span class="input-group-addon" id="basic-addon1" style="color: #ffffff;    background-color: #2979ff; border: 1px solid #2979ff;"><strong>Tipo:</strong></span>
+							      			<select class="form-control" style="font-weight: 700;" ng-model="buscador.str_tipoLugar">
+							      				<option value="">Todos</option>
+							      				<option value="casa">Casas</option>
+							      				<option value="departamento">Departamentos</option>
+							      				<option value="habitacion">Cuarto/habitación</option>
+							      			</select>
+									    </div>
+									    <br>
+									    <div class="input-group">
+									    	<span class="input-group-addon" id="basic-addon1" style="color: #ffffff;    background-color: #2979ff; border: 1px solid #2979ff;"><strong>Ciudad:</strong></span>
+							      			<select class="form-control" style="font-weight: 700;" ng-model="buscador.str_ciudad">
+							      				<option value="">Todas</option>
+							      				<option value="Córdoba">Córdoba</option>
+											  	<option value="Fortín">Fortín</option>
+											  	<option value="Ixtaczoquitlán">Ixtaczoquitlán</option>
+											  	<option value="Mendoza">Mendoza</option>
+											  	<option value="Nogales">Nogales</option>
+											  	<option value="Orizaba">Orizaba</option>
+											  	<option value="Río Blanco">Río Blanco</option>
+							      			</select>
+									    </div>
+									    <br>
+									    <div class="input-group">
+									    	<span class="input-group-addon" id="basic-addon1" style="color: #ffffff;    background-color: #2979ff; border: 1px solid #2979ff;"><strong>Recepción</strong></span>
+							      			<select class="form-control" style="font-weight: 700;" ng-model="buscador.str_tipo">
+							      				<option value="">Todos</option>
+							      				<option value="mixto">Mixto</option>
+							      				<option value="hombres">Hombres</option>
+							      				<option value="mujeres">Mujeres</option>
+							      			</select>
+									    </div>
+									    <hr>
+									    <h3>Rango de precios</h3>
+									    <!--<p>Rango de precios de <strong>{[rangoPrecio.minPrice | currency]}</strong> a <strong>{[rangoPrecio.maxPrice | currency]}</strong>.</p>-->
+
+									    <div range-slider min="rangoPrecio.limites.min" max="rangoPrecio.limites.max" model-min="rangoPrecio.minPrice" model-max="rangoPrecio.maxPrice" filter="currency:'$'" step="100" show-values="true" disabled="rangoPrecio.disabled"></div>
+
+									    <!--<button class="btn btn-info" ng-click="enableBtn()">Habilitar</button>-->
+
+				      		</center>
+				      	</div>
+				      	<br>
+				      </div><!--/left-->
+
+			      	<!--right-->
+			      	<div class="col-md-9">
+			       		<div class="row" style="display:flex; flex-wrap: wrap;">
+							<div class="col-md-6" ng-repeat="lugar in lugaresArray | filter: buscador | rangeFilter: rangoPrecio">
+								<div class="thumbnail">
+									<img src="http://encuentra-casa.appspot.com/mostrar?key={[lugar.str_urlFotoPerfil]}" alt="">
+									<div class="precioCaption"><strong>{[lugar.int_rentaMensual | currency]}</strong></div> 
+				                  	
+				                  <div class="caption">
+				                    <h3><span class="label label-default">{[lugar.str_ciudad]}</span> {[lugar.str_nombrePension]} </h3>
+				                    <p align="justify" class="multi_lines_text">{[lugar.txt_descripcion]}</p>
+				                    <a href="/verPension?idPension={[lugar.ID]}" class="btn btn-info">Conocer más...</a>
+				                  </div>
+				                </div>
+							</div>
+						</div>
+
+			      	</div><!--/right-->
+
+			        
+
+			  	</div><!--/row-->
+			</div><!--/container-->
+		</section>
+
+		<footer>
+			<hr>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<a href="/">Inicio</a> | <a href="/encuentra">Encuentra</a> | <a href="/#contacto">Contacto</a>
+					</div>
+					<div class="col-md-5 col-md-offset-3">
+						© Encuentra Casa 2016. Todos los derechos reservados.
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+
+	<!-- script references -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="indexJS/bootstrap.min.js"></script>
+		<script src="indexJS/scripts.js"></script>
+		<script src="indexJS/angular.min.js"></script>
+		<script src="indexJS/angular.rangeSlider.js"></script>
+		<script src="indexJS/app.js"></script>
+
+	</body>
+</html>

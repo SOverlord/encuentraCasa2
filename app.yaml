@@ -10,6 +10,9 @@ handlers:
 - url: /verPension
   script: verPension.application
 
+- url: /sendMail
+  script: sendMail.application
+
 #Visores para administrador
 - url: /estadisticas
   script: estadisticas.application
@@ -22,6 +25,9 @@ handlers:
 
 - url: /publicarNuevo
   script: publicarNuevo.application
+
+- url: /encuentra
+  script: encuentra.application
 
 - url: /registrarNuevaPension
   script: registrarNuevaPension.application
@@ -74,6 +80,19 @@ handlers:
 
 - url: /js
   static_dir: admin/js
+
+
+- url: /indexImages
+  static_dir: img
+
+- url: /indexCSS
+  static_dir: css
+
+- url: /indexFonts
+  static_dir: fonts
+
+- url: /indexJS
+  static_dir: js
 
 #index.html && main.py
 - url: .*

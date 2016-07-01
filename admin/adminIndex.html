@@ -43,7 +43,19 @@
 					<label>DATOS GENERALES</label>
 				  	<div class="form-group"><input type="text" class="form-control" name="nombrePension" id="nombrePension" placeholder="Nombre de Pensión" required autofocus/></div>
 				  	<div class="form-group"><input type="text" class="form-control" name="nombreArrendador" id="nombreArrendador" placeholder="Nombre de Arrendador" required/></div>
-					<div class="form-group"><input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" required/></div>
+					<!--<div class="form-group"><input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ciudad" required/></div>-->
+					<div class="form-group">
+						<select class="form-control" name="ciudad" id="ciudad" required>
+							<option value="">Selecciona una opción</option>
+							<option value="Córdoba">Córdoba</option>
+							<option value="Fortín">Fortín</option>
+							<option value="Ixtaczoquitlán">Ixtaczoquitlán</option>
+							<option value="Mendoza">Mendoza</option>
+							<option value="Nogales">Nogales</option>
+							<option value="Orizaba">Orizaba</option>
+							<option value="Río Blanco">Río Blanco</option>
+						</select>
+					</div>
 					<div class="form-group"><input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección" required/></div>
 					<div class="form-group"><input type="text" class="form-control" name="cp" id="cp" placeholder="Código Postal" required/></div>
 					<div class="form-group"><input type="text" class="form-control" name="email" id="email" placeholder="Correo Electrónico" required></div>

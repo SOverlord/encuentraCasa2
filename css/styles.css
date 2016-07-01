@@ -1,0 +1,138 @@
+/*
+A Bootstrap 3.1 affix sidebar template
+from http://bootply.com
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+
+.multi_lines_text { 
+  white-space: pre-line; 
+}
+
+.thumbnail { 
+  position: relative;
+} 
+.thumbnail .precioCaption { 
+  position: absolute;  
+  top: 0px; 
+  right: 0px; 
+  color: #fff; 
+  background: #000; 
+  text-align:center; 
+  font-weight:bold; 
+  font-size: 24px; 
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  opacity: 0.7;
+  border-bottom-left-radius: 5px;
+} 
+
+.full {
+    background: url('/indexImages/fondo2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.full2 {
+    background: url('/indexImages/fondo.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.full3 {
+    background: url('/indexImages/fondo3.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+section{
+	padding-top: 70px; padding-bottom: 70px;
+}
+
+footer{
+	padding-top: 15px; padding-bottom: 15px;
+}
+
+option{
+	font-weight: 700;
+}
+
+.sectionTitle{
+	padding-bottom: 60px;
+}
+
+.sombraNav{
+	border-color: transparent;
+              -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+}
+
+body {
+ padding-top:50px;
+ margin-top: 50px;
+}
+
+#masthead { 
+ min-height:610px;
+
+}
+
+#masthead h1 {
+ line-height: 1;
+ padding-top:20px;
+ color: #fff;
+ text-align: center;
+ font-size: 60px;
+ font-weight: 900;
+}
+
+#masthead .well {
+ margin-top:8%;
+}
+
+@media screen and (min-width: 768px) {
+  #masthead h1 {
+    font-size: 50px;
+  }
+}
+
+.navbar-bright {
+ background-color:#111155;
+ color:#fff;
+}
+
+.affix-top,.affix{
+ position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	/*margin-top:30px;
+  	width:228px;*/
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:60px;
+    width:263px;
+  }
+}
+
+#sidebar li.active {
+  border:0 #eee solid;
+  border-right-width:5px;
+}

@@ -1,113 +1,190 @@
 <!DOCTYPE html>
-<head>
- <meta name="viewport" content="width=device-width" />
- <title>  </title>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Encuentra Casa</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="indexCSS/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="indexCSS/styles.css" rel="stylesheet">
+    <link href="indexCSS/bootstrap.techie.css" rel="stylesheet">
 
- <link rel="stylesheet" href="/css/bootstrap.min.css">
- <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
- <script src="/js/bootstrap.min.js"></script>
+    <style type="text/css"> 
+      
+    </style>
+  </head>
+  <body>
 
+    <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Enviar mensaje a Aarón Santos</h4>
+          </div>
+          <div class="modal-body">
+                <form action="/sendMail">
+              <div class="form-group">
+                <label ><strong>Nombre</strong></label>
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                      <input type="text" class="form-control" name="nombre" required>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label ><strong>Tu Correo electrónico</strong></label>
+                  <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                      <input type="email" class="form-control" name="mailSender" required>
+                      <input type="hidden" name="mailTo" value="{{verPens.str_email}}">
+                      <input type="hidden" name="idPens" value="{{verPens.key().id()}}">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label ><strong>Mensaje</strong></label>
+                  <textarea class="form-control" rows="5" name="mensaje" required></textarea>
+              </div>
+              <div class="form-group">
+                  <center><button type="submit" class="btn btn-info"><strong>Enviar</strong></button></center>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</head>
+    <nav class="navbar navbar-inverse navbar-fixed-top sombraNav" role="banner">
+      <div class="container">
+        
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#"><b>Encuentra Casa</b></a> -->
+            <a class="navbar-brand" href="/">
+              <img alt="Brand" src="indexImages/logonav2.png" style="max-width:140px; margin-top: -20px;">
+            </a>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/encuentra"><strong>Encuentra</strong></a></li>
+            <li><a href="/#contacto"><strong>Contacto</strong></a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
 
-<body>
-<b>
+      </div>
+    </nav>
 
+    <!--main-->
 
-<table>
-<tr>
- <td>
-  <img src="/images/tdd.png" heigth=60 width=60/> 
-  <br>
-  <a href="/setupproject"> setup  </a>
- </td>
+    <section id="banner" class="full2" style="background: url('/mostrar?key={{verPens.str_urlFotoPerfil}}')  top center fixed; opacity: 0.9; padding-top: 110px; padding-bottom: 110px;">
+      <div class="container">
+        <center>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalMensaje"><strong>¡Enviar mensaje!</strong></button>
+        </center>
+      </div>
+    </section>
 
- <td>
+    <section id="contenido" style="padding-top: 20px;">
+      <div class="container">
+        <div class="row">
 
- <table>
-  <tr> <td> Project Name: </td> <td></td> </tr>
+          <div class="col-md-6">
+            <h1><strong>{{verPens.str_nombrePension}}<br><small>
+              {% if verPens.str_tipoLugar == "departamento" %} Departamento {% endif %}
+              {% if verPens.str_tipoLugar == "habitacion" %} Habitación {% endif %}
+              {% if verPens.str_tipoLugar == "casa" %} Casa {% endif %}
+              <em>
+              {% if verPens.str_tipo == "hombres" %} sólo para hombres{% endif %}
+              {% if verPens.str_tipo == "mujeres" %} sólo para mujeres{% endif %}
+              {% if verPens.str_tipo == "mixto"  %} mixt@{% endif %}
+              .
+              </em></small></strong></h1>
+            <div class="thumbnail">
+              <img src="/mostrar?key={{verPens.str_urlFotoPerfil}}" alt="..." >
+              <div class="precioCaption"><strong>${{verPens.int_rentaMensual}}</strong></div>
+            
+              <div class="caption row">
+                <center><h4><small>Arrendador: </small><strong>{{verPens.str_nombreArrendador}}</strong></h4></center>
+                    <div class="col-md-6">
+                      <address>
+                        Ubicación: <strong>{{verPens.str_ciudad}}</strong><br>
+                        <i class="fa fa-location-arrow"></i> <strong>{{verPens.str_direccion}}</strong> <br>
+                        C.P.<strong> {{verPens.str_cp}}</strong>
+                      </address>
+                    </div>
+                    <div class="col-md-6">
+                      <address>
+                        e-mail: <strong>{{verPens.str_email}}</strong><br>
+                        Teléfono: <strong>{{verPens.str_telefonoCasa}}</strong> <br>
+                        Celular: <strong>{{verPens.str_telefonoCelular}}</strong>
+                      </address>
+                    </div>
+                  </div>
+                </div>
+          </div>
 
-  <tr> <td> Short Description: </td> <td></td> </tr>
-  <tr> <td> Language: </td> <td></td> </tr>
-  <tr> <td> Architecture: </td> <td></td> </tr>
- </table>
- </td>
-</tr>
+              <div class="col-md-6">
+                <div class="well">
+                  
+                  <p align="justify" class="multi_lines_text">
+                    {{verPens.txt_descripcion}}
+                  </p>
+                  <strong align="justify">
+                    Servicios con los que cuenta:
+                    <br>
+                    {% if verPens.str_luz == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Luz</span>
+                    {% if verPens.str_internet == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Internet</span>
+                    {% if verPens.str_cable == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Cable</span>
+                    {% if verPens.str_telefono == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Teléfono</span>
+                    {% if verPens.str_lavanderia == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Lavandería</span>
+                    {% if verPens.str_comidas == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Comida</span>
+                    {% if verPens.str_aguaCaliente == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Agua Caliente</span>
+                    {% if verPens.str_amueblado == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Amueblado</span>
+                    {% if verPens.str_limpieza == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Limpieza</span>
+                  </strong>
+                  <br>
+                </div>
+              </div>
 
-</table>
+              <div class="col-md-6">
+              </div>
 
+          </div><!--/row-->
+      </div><!--/container-->
+    </section>
 
-<hr>
+    <footer>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <a href="/">Inicio</a> | <a href="#contenido">Encuentra</a> | <a href="/#contacto">Contacto</a>
+          </div>
+          <div class="col-md-5 col-md-offset-3">
+            © Encuentra Casa 2016. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
 
-<table>
-<tr> <td> Project Leader </td> </tr>
-
-<tr> <td> Team members : </td> <td></td> </tr>
-
-
-</table>
-
-
-</td>
-<tr>
-</table>
-</b>
-
-<hr>
-
-            <div class="form-group">
-
-              <a href="/newrelease"> New release </a>
-            </div>
-
-Releases :
-<table border=1>
-<h3> {{verPens.key().id()}} </h3>
-<tr>
-<td> {{verPens.str_nombrePension}} </td>
-<td> {{verPens.txt_descripcion}} </td>
-<td> {{verPens.str_nombreArrendador}} </td>
-<td> {{verPens.str_ciudad}} </td>
-
-
-</tr>
-</table>
-
-<hr>
-<b> ADESOFT SA de CV</b>
-</body>
-
-
-<!--
-{% if user %}
- <p>
-    Welcome, {{user.email()}}!
-    you can <a href="{{logout_url}}"> sign out</a> 
- </p>
-{% else %}
- <p>
-   Welcome !
-   <a href="{{login_url}}">Sign in or register</a> to customize
- </p>
-
-{% endif %}
-
-<p> the time is: {{current_time}} </p>
-
-
-{% if user %}
-  <form action="/prefs" method="post">
-    <label for "tz_offset">
-	Timezone offset from UTC (can be negative):
-    </label>
-    <input name="tz_offset" id="tz_offset" type="text" size=4
-	value="{{ userprefs.tz_offset }}" />
-
-   <input type="submit" value="Set" />
-  </form>
-
-{% endif %}
--->
-</body>
+  <!-- script references -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="indexJS/bootstrap.min.js"></script>
+    <script src="indexJS/scripts.js"></script>
+    <script src="indexJS/angular.min.js"></script>
+    <script src="indexJS/app.js"></script>
+  </body>
 </html>

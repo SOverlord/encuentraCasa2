@@ -14,14 +14,17 @@ class verPension(webapp2.RequestHandler):
 		#Recuperamos el ID de URL
 		idP = int(self.request.get('idPension'))	#Obtenemos ID de URL
 		verPens = models.Lugar.get_by_id(idP)		#Buscamos la ID en la BD
-		if verPens.int_publicarPension == 1:
-			print "Pension activa"
-			template = template_env.get_template('verPension.html')
-			context = {
-				'verPens': verPens 		#Mandamos los datos al HTML
-			}
-			self.response.out.write(template.render(context))
-		else:
-			print "Pension no encontrada o no activa"
+		try:
+			verPens.int_publicarPension == 1
+		except:
+			print "Pension no encontrada o inactiva"
 			self.redirect("/")
+		else:
+				print "Pension activa"
+				template = template_env.get_template('verPension.html')
+				context = {
+					'verPens': verPens 		#Mandamos los datos al HTML
+				}
+				self.response.out.write(template.render(context))
+			
 application = webapp2.WSGIApplication([('/verPension', verPension)], debug=True)
