@@ -14,9 +14,4 @@ indexes:
   properties:
   - name: int_publicarPension
   - name: int_fechaRegistro
-
-- kind: Lugar
-  properties:
-  - name: int_publicarPension
-  - name: int_fechaRegistro
     direction: desc

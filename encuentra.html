@@ -14,6 +14,15 @@
 		<link href="indexCSS/bootstrap.techie.css" rel="stylesheet">
 		<link href="indexCSS/angular.rangeSlider.css" rel="stylesheet">
 
+		<script type="text/javascript">
+	      var cityGET = {
+	        myvalue: "{{ciudad}}"
+	      };
+
+	      if(cityGET.myvalue == "Todos")
+	      	cityGET.myvalue = "";
+	    </script>
+
 	</head>
 	<body ng-app="myApp" ng-controller="encuentraCtrl">
 		<nav class="navbar navbar-inverse navbar-fixed-top sombraNav" role="banner">

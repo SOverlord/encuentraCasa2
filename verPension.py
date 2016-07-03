@@ -20,10 +20,19 @@ class verPension(webapp2.RequestHandler):
 			print "Pension no encontrada o inactiva"
 			self.redirect("/")
 		else:
-				print "Pension activa"
+				carrete = db.Query(models.CarreteFotos).filter("str_LugarID", str(idP))		#Cargamos carrete
+				fotos = 0
+				if not carrete.get():
+			  		hayFotosCarrete = 0
+			  		#print "No hay fotos en carrete"
+			  	else:
+			  		hayFotosCarrete = 1
+			  		#print "Hay fotos en carrete"
 				template = template_env.get_template('verPension.html')
 				context = {
-					'verPens': verPens 		#Mandamos los datos al HTML
+					'verPens': verPens, 		#Mandamos los datos al HTML
+					'hayFotosCarrete': hayFotosCarrete,
+			   		'carrete': carrete
 				}
 				self.response.out.write(template.render(context))
 			

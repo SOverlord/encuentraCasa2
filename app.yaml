@@ -13,6 +13,9 @@ handlers:
 - url: /sendMail
   script: sendMail.application
 
+- url: /sendMailTo
+  script: sendMailTo.application
+
 #Visores para administrador
 - url: /estadisticas
   script: estadisticas.application

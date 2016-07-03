@@ -70,6 +70,9 @@ app.controller('encuentraCtrl', function($scope, $http, REST, $sce) {
       maxPrice: 10000,
       disabled: false
     };
+    $scope.buscador = {
+      str_ciudad : cityGET.myvalue
+    }
 
     var lugaresAPI = new REST("http://encuentra-casa.appspot.com/getLugaresREST");
 

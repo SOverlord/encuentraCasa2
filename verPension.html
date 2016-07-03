@@ -6,6 +6,8 @@
     <title>Encuentra Casa</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="indexCSS/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -13,7 +15,14 @@
     <link href="indexCSS/styles.css" rel="stylesheet">
     <link href="indexCSS/bootstrap.techie.css" rel="stylesheet">
 
-    <style type="text/css"> 
+    <style type="text/css">
+      .carousel-inner > .item > img,
+      .carousel-inner > .item > a > img {
+        width: 70%;
+        height: 70%;
+        margin: auto;
+  }
+  </style>
       
     </style>
   </head>
@@ -24,10 +33,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Enviar mensaje a Aarón Santos</h4>
+            <h4 class="modal-title" id="myModalLabel">Enviar mensaje a {{verPens.str_nombreArrendador}}</h4>
           </div>
           <div class="modal-body">
-                <form action="/sendMail">
+                <form action="/sendMailTo">
               <div class="form-group">
                 <label ><strong>Nombre</strong></label>
                 <div class="input-group">
@@ -42,6 +51,7 @@
                       <input type="email" class="form-control" name="mailSender" required>
                       <input type="hidden" name="mailTo" value="{{verPens.str_email}}">
                       <input type="hidden" name="idPens" value="{{verPens.key().id()}}">
+                      <input type="hidden" name="namePens" value="{{verPens.str_nombrePension}}">
                   </div>
               </div>
               <div class="form-group">
@@ -140,6 +150,7 @@
                 <div class="well">
                   
                   <p align="justify" class="multi_lines_text">
+                    <h2>Descripción:</h2>
                     {{verPens.txt_descripcion}}
                   </p>
                   <strong align="justify">
@@ -156,6 +167,28 @@
                     {% if verPens.str_limpieza == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Limpieza</span>
                   </strong>
                   <br>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    {% if hayFotosCarrete != 0 %}
+                      {% set a = 0 %}
+                      {% set b = 0 %}
+                      <ol class="carousel-indicators">
+                      {% for f in carrete %}
+                      <li data-target="#myCarousel" data-slide-to="{f}" {%if a == 0%} class="active" {%set a = a+1 %} {%endif%}></li>
+                      {% endfor %}
+                      </ol>
+                      <div class="carousel-inner" role="listbox" style="max-height:250px;">
+                      {% for i in carrete %}
+                        <div {%if b == 0%} class="item active" {%set b = b+1 %} {% else %} class="item" {%endif%}><img src="/mostrar?key={{i.str_urlFoto}}" class="img-responsive img-thumbnail"></div>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                    </div>
                 </div>
               </div>
 
