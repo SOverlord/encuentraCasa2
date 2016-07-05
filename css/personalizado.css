@@ -48,7 +48,7 @@
 
 .toggle-box:checked + label:before {
   content: "\2212";
-} 
+}
 
 /*
 	/.Menú desplegable desde CSS.

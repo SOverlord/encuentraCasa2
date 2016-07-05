@@ -14,17 +14,12 @@
     <![endif]-->
     <link href="indexCSS/styles.css" rel="stylesheet">
     <link href="indexCSS/bootstrap.techie.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="indexCSS/css/elastislide.css" />
+    <link rel="stylesheet" type="text/css" href="indexCSS/css/custom.css" />
+    <script src="indexJS/js/modernizr.custom.17475.js"></script>
+</script>
 
-    <style type="text/css">
-      .carousel-inner > .item > img,
-      .carousel-inner > .item > a > img {
-        width: 70%;
-        height: 70%;
-        margin: auto;
-  }
-  </style>
-      
-    </style>
   </head>
   <body>
 
@@ -128,74 +123,83 @@
             
               <div class="caption row">
                 <center><h4><small>Arrendador: </small><strong>{{verPens.str_nombreArrendador}}</strong></h4></center>
-                    <div class="col-md-6">
-                      <address>
+                    <div class="col-md-6 col-sm-6">
+                      <address><center>
                         Ubicación: <strong>{{verPens.str_ciudad}}</strong><br>
                         <i class="fa fa-location-arrow"></i> <strong>{{verPens.str_direccion}}</strong> <br>
                         C.P.<strong> {{verPens.str_cp}}</strong>
-                      </address>
+                      </center></address>
                     </div>
-                    <div class="col-md-6">
-                      <address>
+                    <div class="col-md-6 col-sm-6">
+                      <address><center>
                         e-mail: <strong>{{verPens.str_email}}</strong><br>
                         Teléfono: <strong>{{verPens.str_telefonoCasa}}</strong> <br>
                         Celular: <strong>{{verPens.str_telefonoCelular}}</strong>
+                        </center>
                       </address>
                     </div>
                   </div>
                 </div>
+                <iframe id="mapa" width="100%" height="250px" frameborder="0"  style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2hArG4web6rH0lGPeTB_1AOtqfc72dxk&q={{verPens.str_direccion}}, {{verPens.str_ciudad}}, México&zoom=15"></iframe>
           </div>
 
               <div class="col-md-6">
                 <div class="well">
+                  <p align="justify" class="multi_lines_text"><center><h2>Descripción y Servicios</h2></center>{{verPens.txt_descripcion}}</p>
+                  <strong align="justify">Servicios que se incluyen en la renta (en azul)</strong><br>
+                  <div class="row">
+                  <div class="col-md-4 col-sm-4"><center>
+                  {% if verPens.str_luz == "True" %} <span class="label label-info"       style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger "                            style="font-size:16px;font-weight:bold;">{% endif %} Luz</span><br>
+                  {% if verPens.str_cable == "True" %} <span class="label label-info"     style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                             style="font-size:16px;font-weight:bold;">{% endif %} Cable</span></br>
+                  {% if verPens.str_internet == "True" %} <span class="label label-info"  style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                             style="font-size:16px;font-weight:bold;">{% endif %} Internet</span><br>
+                  </center></div>
+                  <div class="col-md-4 col-sm-4"><center>
+                  {% if verPens.str_comidas == "True" %} <span class="label label-info"   style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                             style="font-size:16px;font-weight:bold;">{% endif %} Comida</span><br>
+                  {% if verPens.str_telefono == "True" %} <span class="label label-info"  style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                             style="font-size:16px;font-weight:bold;">{% endif %} Teléfono</span><br>
+                  {% if verPens.str_limpieza == "True" %} <span class="label label-info"  style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                             style="font-size:16px;font-weight:bold;">{% endif %} Limpieza</span><br>
+                  </center></div>
                   
-                  <p align="justify" class="multi_lines_text">
-                    <h2>Descripción:</h2>
-                    {{verPens.txt_descripcion}}
-                  </p>
-                  <strong align="justify">
-                    Servicios con los que cuenta:
-                    <br>
-                    {% if verPens.str_luz == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Luz</span>
-                    {% if verPens.str_internet == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Internet</span>
-                    {% if verPens.str_cable == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Cable</span>
-                    {% if verPens.str_telefono == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Teléfono</span>
-                    {% if verPens.str_lavanderia == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Lavandería</span>
-                    {% if verPens.str_comidas == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Comida</span>
-                    {% if verPens.str_aguaCaliente == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Agua Caliente</span>
-                    {% if verPens.str_amueblado == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Amueblado</span>
-                    {% if verPens.str_limpieza == "True" %} <span class="label label-info"> {% else %} <span class="label label-danger"> {% endif %} Limpieza</span>
-                  </strong>
-                  <br>
+                  <div class="col-md-4 col-sm-4"><center>
+                  {% if verPens.str_lavanderia == "True" %}<span class="label label-info"   style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                               style="font-size:16px;font-weight:bold;">{% endif %} Lavandería</span><br>
+                  {% if verPens.str_amueblado == "True" %}<span class="label label-info"    style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                               style="font-size:16px;font-weight:bold;">{% endif %} Amueblado</span><br>
+                  {% if verPens.str_aguaCaliente == "True" %}<span class="label label-info" style="font-size:16px;font-weight:bold;">
+                  {% else %} <span class="label label-danger"                               style="font-size:16px;font-weight:bold;">{% endif %} Agua Caliente</span><br>
+                  </center></div>
+                  </div>
+                  </center>
                 </div>
               </div>
-
+              <!--FOTOS-->
               <div class="col-md-6">
-                <div class="row">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
+                <div class="well">
+                <div class="gallery">
+                  <!-- Elastislide Carousel -->
+                  <ul id="carousel" class="elastislide-list">
                     {% if hayFotosCarrete != 0 %}
-                      {% set a = 0 %}
-                      {% set b = 0 %}
-                      <ol class="carousel-indicators">
+                      {% set ct = 1%}
                       {% for f in carrete %}
-                      <li data-target="#myCarousel" data-slide-to="{f}" {%if a == 0%} class="active" {%set a = a+1 %} {%endif%}></li>
+                      <li data-preview="/mostrar?key={{f.str_urlFoto}}" style="max-width:150px;"><a href="#"><img src="/mostrar?key={{f.str_urlFoto}}" alt="image{{ct}}" /></a></li>
+                      {% set ct = ct+1%}
                       {% endfor %}
-                      </ol>
-                      <div class="carousel-inner" role="listbox" style="max-height:250px;">
-                      {% for i in carrete %}
-                        <div {%if b == 0%} class="item active" {%set b = b+1 %} {% else %} class="item" {%endif%}><img src="/mostrar?key={{i.str_urlFoto}}" class="img-responsive img-thumbnail"></div>
-                      {% endfor %}
-                      </div>
-                    {% endif %}
-                    </div>
+                    {%else%}
+                      <li data-preview="indexImages/logonav2.png" style="max-width:150px;"><a href="#"><img src="indexImages/logonav2.png" alt="image01" /></a></li>
+                    {%endif%}
+                  </ul>
+                  <div class="image-preview"><img id="preview" src="" style="max-width:100%;"/></div>
                 </div>
               </div>
-
-              <div class="col-md-6">
               </div>
-
+              <!--/FOTOS-->
           </div><!--/row-->
+             
       </div><!--/container-->
     </section>
 
@@ -213,8 +217,45 @@
       </div>
     </footer>
 
-  <!-- script references -->
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script type="text/javascript" src="indexJS/js/jquerypp.custom.js"></script>
+    <script type="text/javascript" src="indexJS/js/jquery.elastislide.js"></script>
+    <script type="text/javascript">
+      
+      // example how to integrate with a previewer
+
+      var current = 0,
+        $preview = $( '#preview' ),
+        $carouselEl = $( '#carousel' ),
+        $carouselItems = $carouselEl.children(),
+        carousel = $carouselEl.elastislide( {
+          current : current,
+          minItems : 2,
+          onClick : function( el, pos, evt ) {
+
+            changeImage( el, pos );
+            evt.preventDefault();
+
+          },
+          onReady : function() {
+
+            changeImage( $carouselItems.eq( current ), current );
+            
+          }
+        } );
+
+      function changeImage( el, pos ) {
+
+        $preview.attr( 'src', el.data( 'preview' ) );
+        $carouselItems.removeClass( 'current-img' );
+        el.addClass( 'current-img' );
+        carousel.setCurrent( pos );
+
+      }
+
+    </script>
+  <!-- script references -->
     <script src="indexJS/bootstrap.min.js"></script>
     <script src="indexJS/scripts.js"></script>
     <script src="indexJS/angular.min.js"></script>

@@ -78,23 +78,14 @@
 	  								<input type="submit" class="btn btn-info" value="Actualizar foto"><br>
   								</left>
   							</form>
+
+  							<label>Ubicación</label>
+
+  							<iframe id="mapa" width="100%" height="200px" frameborder="0"  style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2hArG4web6rH0lGPeTB_1AOtqfc72dxk&q={{editarPens.str_direccion}}, {{editarPens.str_ciudad}}, México&zoom=15">
+			                </iframe>
+
               				<form action="/actualizarPension?idP={{editarPens.key().id()}}" method="post">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group"><label>RECEPCIÓN</label><br>
-											<input name="tipo" id="tipo" value="hombres" type="radio" {% if editarPens.str_tipo == "hombres" %} checked {% endif %} required> Hombres<br>
-											<input name="tipo" id="tipo" value="mujeres" type="radio" {% if editarPens.str_tipo == "mujeres" %} checked {% endif %} required> Mujeres<br>
-											<input name="tipo" id="tipo" value="mixto" type="radio" {% if editarPens.str_tipo == "mixto" %} checked {% endif %} required> Mixto<br>
-										</div>
-									</div>
-									<div class = "col-md-6">
-										<div class="form-group"><label>TIPO DE LUGAR</label><br>
-											<input type="radio" name="tipoLugar" id="tipoLugar" value="casa" {% if editarPens.str_tipoLugar == "casa" %} checked {% endif %} required> Casa<br>
-											<input type="radio" name="tipoLugar" id="tipoLugar" value="departamento" {% if editarPens.str_tipoLugar == "departamento" %} checked {% endif %} required> Departamento<br>
-											<input type="radio" name="tipoLugar" id="tipoLugar" value="habitacion" {% if editarPens.str_tipoLugar == "habitacion" %} checked {% endif %} required> Cuarto/Habitación
-										</div>
-									</div>
-								</div>
+								
 						</div><!--/fotoPerfil-->
 						<div class="col-md-8 col-sm-12 col-xs-12 animated fadeInDown">
 							<div class = "row"><!--datosGenerales-->
@@ -116,15 +107,34 @@
 									</div>
 									<div class="form-group"><label>Dirección</label><input type="text" class="form-control" name="direccion" value="{{editarPens.str_direccion}}" required></div>
 									<div class="form-group"><label>Código postal</label><input type="text" class="form-control" name="cp" value="{{editarPens.str_cp}}" required></div>
+
+									<div class="row">
+											<div class="col-md-6">
+												<div class="form-group"><label>RECEPCIÓN</label><br>
+													<input name="tipo" id="tipo" value="hombres" type="radio" {% if editarPens.str_tipo == "hombres" %} checked {% endif %} required> Hombres<br>
+													<input name="tipo" id="tipo" value="mujeres" type="radio" {% if editarPens.str_tipo == "mujeres" %} checked {% endif %} required> Mujeres<br>
+													<input name="tipo" id="tipo" value="mixto" type="radio" {% if editarPens.str_tipo == "mixto" %} checked {% endif %} required> Mixto<br>
+												</div>
+											</div>
+											<div class = "col-md-6">
+												<div class="form-group"><label>TIPO DE LUGAR</label><br>
+													<input type="radio" name="tipoLugar" id="tipoLugar" value="casa" {% if editarPens.str_tipoLugar == "casa" %} checked {% endif %} required> Casa<br>
+													<input type="radio" name="tipoLugar" id="tipoLugar" value="departamento" {% if editarPens.str_tipoLugar == "departamento" %} checked {% endif %} required> Departamento<br>
+													<input type="radio" name="tipoLugar" id="tipoLugar" value="habitacion" {% if editarPens.str_tipoLugar == "habitacion" %} checked {% endif %} required> Cuarto/Habitación
+												</div>
+											</div>
+									</div>
+
 			  					</div>
 			  					<div class  = "col-xs-6">
 			  						<div class="form-group"><label>Renta Mensual</label><div class="input-group"><div class="input-group-addon">$</div><input type="number" class="form-control" name="rentaMensual" value="{{editarPens.int_rentaMensual}}" required></div></div>
 									<div class="form-group"><label>Correo electrónico </label><input type="email" class="form-control" name="email" value="{{editarPens.str_email}}" required></div>
 									<div class="form-group"><label>Teléfono de casa</label><input type="text" class="form-control" name="telefonoCasa" value="{{editarPens.str_telefonoCasa}}" required></div>
 									<div class="form-group"><label>Teléfono celular</label><input type="text" class="form-control" name="telefonoCelular" value="{{editarPens.str_telefonoCelular}}" required></div>
-									<div class="form-group"><label>Descripción</label><textarea class="form-control" name="descripcion" placeholder="Descripción" maxlength="250" rows="4" required>{{editarPens.txt_descripcion}}</textarea></div>
+									<div class="form-group"><label>Descripción</label><textarea class="form-control" name="descripcion" placeholder="Descripción" maxlength="500" rows="5" required>{{editarPens.txt_descripcion}}</textarea></div>
 								</div>
 							</div><!--/datosGenerales-->
+							<hr>
 							<div class="row"><!--servicios-->
 								<center><label>SERVICIOS </label></center>
 									<div class="col-xs-4" align="left">
@@ -143,6 +153,9 @@
 										<input type="checkbox" name="servicio9" id="servicio9" value="True" {% if editarPens.str_limpieza == "True" %} checked {% endif %}>  <label class="light">Limpieza</label><br>
 						  			</div>
 							</div><!--/servicios-->
+
+							
+
 						</div>
 					</div>
 					<div class="col-md-12 animated fadeInDown">

@@ -26,20 +26,8 @@ handlers:
 - url: /adminIndex
   script: adminIndex.application
 
-- url: /publicarNuevo
-  script: publicarNuevo.application
-
 - url: /encuentra
   script: encuentra.application
-
-- url: /registrarNuevaPension
-  script: registrarNuevaPension.application
-
-- url: /editarPension
-  script: editarPension.application
-
-- url: /actualizarPension
-  script: actualizarPension.application
 
 #Comportamientos admin
 - url: /validar_inicio_sesion
@@ -59,6 +47,15 @@ handlers:
 
 - url: /eliminarFoto
   script: eliminarFoto.application
+
+- url: /registrarNuevaPension
+  script: registrarNuevaPension.application
+
+- url: /editarPension
+  script: editarPension.application
+
+- url: /actualizarPension
+  script: actualizarPension.application
 
 - url: /registrarUsuario
   script: registrarUsuario.application

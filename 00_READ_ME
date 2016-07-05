@@ -1,8 +1,11 @@
-Version 5.0
+Version 4.9
 
 Se reinició el proyecto debido al approach que se iba a dar.
 En las versiones < 4.9 procedía a una red social donde cada pensión creaba su perfil privado. De igual forma, los usuarios procedían a crear su perfil.
 Ahora, se tendrá una cuenta maestra administrador que registrará las pensiones. Además, todos los usuarios podrán ingresar sin registro.
+
+Version 5.0 (04/Jul2016)
+Fin del proyecto. Version Beta 1.0.1.5 al mercado.
 
 
 
