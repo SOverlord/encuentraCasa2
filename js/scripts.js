@@ -6,6 +6,13 @@ $('#sidebar').affix({
   }
 });
 
+$('#sidebar2').affix({
+  offset: {
+    top: 390
+  }
+});
+
+
 /* activate scrollspy menu */
 var $body   = $(document.body);
 var navHeight = $('.navbar').outerHeight(true) + 10;

@@ -107,40 +107,42 @@
         <div class="row">
 
           <div class="col-md-6">
-            <h1><strong>{{verPens.str_nombrePension}}<br><small>
-              {% if verPens.str_tipoLugar == "departamento" %} Departamento {% endif %}
-              {% if verPens.str_tipoLugar == "habitacion" %} Habitación {% endif %}
-              {% if verPens.str_tipoLugar == "casa" %} Casa {% endif %}
-              <em>
-              {% if verPens.str_tipo == "hombres" %} sólo para hombres{% endif %}
-              {% if verPens.str_tipo == "mujeres" %} sólo para mujeres{% endif %}
-              {% if verPens.str_tipo == "mixto"  %} mixt@{% endif %}
-              .
-              </em></small></strong></h1>
-            <div class="thumbnail">
-              <img src="/mostrar?key={{verPens.str_urlFotoPerfil}}" alt="..." >
-              <div class="precioCaption"><strong>${{verPens.int_rentaMensual}}</strong></div>
-            
-              <div class="caption row">
-                <center><h4><small>Arrendador: </small><strong>{{verPens.str_nombreArrendador}}</strong></h4></center>
-                    <div class="col-md-6 col-sm-6">
-                      <address><center>
-                        Ubicación: <strong>{{verPens.str_ciudad}}</strong><br>
-                        <i class="fa fa-location-arrow"></i> <strong>{{verPens.str_direccion}}</strong> <br>
-                        C.P.<strong> {{verPens.str_cp}}</strong>
-                      </center></address>
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                      <address><center>
-                        e-mail: <strong>{{verPens.str_email}}</strong><br>
-                        Teléfono: <strong>{{verPens.str_telefonoCasa}}</strong> <br>
-                        Celular: <strong>{{verPens.str_telefonoCelular}}</strong>
-                        </center>
-                      </address>
+              <h1><strong>{{verPens.str_nombrePension}}<br><small>
+                {% if verPens.str_tipoLugar == "departamento" %} Departamento {% endif %}
+                {% if verPens.str_tipoLugar == "habitacion" %} Habitación {% endif %}
+                {% if verPens.str_tipoLugar == "casa" %} Casa {% endif %}
+                <em>
+                {% if verPens.str_tipo == "hombres" %} sólo para hombres{% endif %}
+                {% if verPens.str_tipo == "mujeres" %} sólo para mujeres{% endif %}
+                {% if verPens.str_tipo == "mixto"  %} mixt@{% endif %}
+                .
+                </em></small></strong></h1>
+            <div id="sidebar2">
+              <div class="thumbnail">
+                <img src="/mostrar?key={{verPens.str_urlFotoPerfil}}" alt="..." style="max-height: 320px;">
+                <div class="precioCaption"><strong>${{verPens.int_rentaMensual}}</strong></div>
+              
+                <div class="caption row">
+                  <center><h4><small>Arrendador: </small><strong>{{verPens.str_nombreArrendador}}</strong></h4></center>
+                      <div class="col-md-6 col-sm-6">
+                        <address><center>
+                          Ubicación: <strong>{{verPens.str_ciudad}}</strong><br>
+                          <i class="fa fa-location-arrow"></i> <strong>{{verPens.str_direccion}}</strong> <br>
+                          C.P.<strong> {{verPens.str_cp}}</strong>
+                        </center></address>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <address><center>
+                          e-mail: <strong><a data-toggle="modal" data-target="#modalMensaje">{{verPens.str_email}}</a></strong><br>
+                          Teléfono: <strong>{{verPens.str_telefonoCasa}}</strong> <br>
+                          Celular: <strong>{{verPens.str_telefonoCelular}}</strong>
+                          </center>
+                        </address>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <iframe id="mapa" width="100%" height="250px" frameborder="0"  style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2hArG4web6rH0lGPeTB_1AOtqfc72dxk&q={{verPens.str_direccion}}, {{verPens.str_ciudad}}, México&zoom=15"></iframe>
+            
+            </div>
           </div>
 
               <div class="col-md-6">
@@ -176,28 +178,35 @@
                   </div>
                   </center>
                 </div>
+
+                <iframe id="mapa" width="100%" height="250px" frameborder="0"  style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2hArG4web6rH0lGPeTB_1AOtqfc72dxk&q={{verPens.str_direccion}}, {{verPens.str_ciudad}}, México&zoom=15"></iframe>
+
+                <br>
+
+                <!--/FOTOS-->
+                  <div class="gallery">
+                    <!-- Elastislide Carousel -->
+                    <ul id="carousel" class="elastislide-list">
+                      {% if hayFotosCarrete != 0 %}
+                        {% set ct = 1%}
+                        {% for f in carrete %}
+                        <li data-preview="/mostrar?key={{f.str_urlFoto}}" style="max-width:150px;"><a href="#"><img src="/mostrar?key={{f.str_urlFoto}}" alt="image{{ct}}" /></a></li>
+                        {% set ct = ct+1%}
+                        {% endfor %}
+                      {%else%}
+                        <li data-preview="indexImages/logonav2.png" style="max-width:150px;"><a href="#"><img src="indexImages/logonav2.png" alt="image01" /></a></li>
+                      {%endif%}
+                    </ul>
+                    <div class="image-preview"><img id="preview" src="" style="max-width:100%;"/></div>
+                  </div>
+                  <br>
+                  <center>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalMensaje"><strong>¡Contacta al arrendador!</strong></button>
+                  </center>
+
               </div>
-              <!--FOTOS-->
-              <div class="col-md-6">
-                <div class="well">
-                <div class="gallery">
-                  <!-- Elastislide Carousel -->
-                  <ul id="carousel" class="elastislide-list">
-                    {% if hayFotosCarrete != 0 %}
-                      {% set ct = 1%}
-                      {% for f in carrete %}
-                      <li data-preview="/mostrar?key={{f.str_urlFoto}}" style="max-width:150px;"><a href="#"><img src="/mostrar?key={{f.str_urlFoto}}" alt="image{{ct}}" /></a></li>
-                      {% set ct = ct+1%}
-                      {% endfor %}
-                    {%else%}
-                      <li data-preview="indexImages/logonav2.png" style="max-width:150px;"><a href="#"><img src="indexImages/logonav2.png" alt="image01" /></a></li>
-                    {%endif%}
-                  </ul>
-                  <div class="image-preview"><img id="preview" src="" style="max-width:100%;"/></div>
-                </div>
-              </div>
-              </div>
-              <!--/FOTOS-->
+              
+              
           </div><!--/row-->
              
       </div><!--/container-->

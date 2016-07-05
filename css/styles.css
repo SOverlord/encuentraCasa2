@@ -137,16 +137,26 @@ body {
   border-right-width:5px;
 }
 
-a {
-  color: #555;
-  text-decoration: none;
+@media (min-width: 979px) {
+  #sidebar2.affix-top {
+    position: static;
+    /*margin-top:30px;
+    width:228px;*/
+  }
+  
+  #sidebar2.affix {
+    position: fixed;
+    top:80px;
+    width:553px;
+  }
 }
+
 .js .gallery {
   width: 100%;
-  max-width: 450px;
+  /*max-width: 450px;*/
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 4px;
   position: relative;
   background: #000 url(../indexImages/black_denim.png);
-  box-shadow: 0 2px 1px rgba(255,255,255,0.9), 0 -2px 1px rgba(255,255,255,0.9);
+  /*box-shadow: 0 2px 1px rgba(255,255,255,0.9), 0 -2px 1px rgba(255,255,255,0.9);*/
 }
