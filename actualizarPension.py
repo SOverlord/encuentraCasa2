@@ -27,7 +27,7 @@ class actualizarPension(session_module.BaseSessionHandler, webapp2.RequestHandle
 			new_Ciudad = self.request.get('nombreCiudad')
 			new_Direccion = self.request.get('direccion')
 			new_CP = self.request.get('cp')
-			new_email = self.request.get('email')
+			new_email = self.request.get('email', default_value='0')
 			new_telefonoCasa = self.request.get('telefonoCasa')
 			new_telefonoCelular = self.request.get('telefonoCelular')
 

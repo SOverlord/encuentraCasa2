@@ -22,7 +22,7 @@ class Lugar(db.Model):
     str_tipo = db.StringProperty()
     str_telefonoCasa = db.StringProperty()
     str_telefonoCelular = db.StringProperty()
-    str_email = db.StringProperty()
+    str_email = db.StringProperty(default="0")
 
     str_luz = db.StringProperty(default="False")
     str_internet = db.StringProperty(default="False")

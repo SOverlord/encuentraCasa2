@@ -20,8 +20,6 @@ class registrarNuevaPension(webapp2.RequestHandler):
 
         int_registerDate = int(YY+MM+DD+hh+mm)
         str_registerDate = str(YY+"-"+DD+"-"+MM+" "+hh+":"+mm)
-        print int_registerDate
-        print str_registerDate
 
         l_renta = int(self.request.get('costoRenta'))
         l_nombrePension = self.request.get('nombrePension')
@@ -29,7 +27,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
         l_ciudad = self.request.get('ciudad')
         l_direccion = self.request.get('direccion')
         l_cp = self.request.get('cp')
-        l_email = self.request.get('email')
+        l_email = self.request.get('email', default_value='0')
         l_telCasa = self.request.get('telefonoCasa')
         l_telCel = self.request.get('telefonoCelular')
         l_tipo = self.request.get('tipo')
@@ -73,7 +71,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
         pension.str_amueblado = l_amueblado
         pension.str_limpieza = l_limpieza
         
-        pension.int_publicarPension = 1 #No esta publicada aun
+        pension.int_publicarPension = 1 #Se publica automaticamente
         pension.str_urlFotoPerfil = "0" #significa que no tiene imagen
         #colocamos esas variables en el objeto pension
         pension.put()
@@ -83,7 +81,7 @@ class registrarNuevaPension(webapp2.RequestHandler):
         #self.redirect("/adminIndex")
 
         idPension = str(pension.key().id_or_name())
-        print "Nueva pension. ID -> "+idPension #4748790720364544
+        #print "Nueva pension. ID -> "+idPension #4748790720364544
         self.redirect("/editarPension?idPension="+idPension)
 	
 	
